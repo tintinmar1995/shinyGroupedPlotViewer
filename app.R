@@ -9,12 +9,17 @@
 #
 
 library(shiny)
+library(shinydashboard)
+
 
 ############################################
 #### A RENSEIGNER AVANT DE LANCER L'APP ####
+############################################
 location = '..'
-#regex = "(?<group>[A-Z0-9 \\.]{5,5}-[0-9]{3,3})_(?<chart>[A-Z_]*).png"
+regex = "(?<group>[A-Z0-9 \\.]{5,5}-[0-9]{3,3})_(?<chart>[A-Z_]*).png"
 regex = "(?<chart>balance)_(?<group>[A-Z0-9\\-_ \\.]*).png"
+width = 1000
+if (file.exists("config.R")){source("config.R", local = T)}
 ############################################
 ############################################
 
@@ -24,19 +29,28 @@ ui <- fluidPage(
 
   div(
     style="margin: 30px;",
-    fluidRow(
-      column(6, textInput("regex", "Expression régulière", value = regex, width = "100%")),
-      column(6, sliderInput("width", "Taille images", 100, 1000, 400, 50, width = "100%"))),
-    fluidRow(
-      selectInput('groups', "Groupes", choices = c(), width = "100%")),
-    fluidRow(
+    fluidRow(h4(paste("Inspection du dossier", location))), br(),
+    
+    box(width=12, title="Sélection",
+      selectInput('groups', "Groupes", choices = c(), width = "100%"),
       selectInput('charts', "Graphiques", choices = c(), width = "100%", multiple = TRUE)),
+    
     hr(style="margin-bottom: 60px;"),
-    fluidRow(
-      uiOutput('charts')))
+    fluidRow(uiOutput('charts')), br(),
+    
+    box(width=12, title="Paramètres", collapsed = T, collapsible = T,
+        column(6, textInput("regex", "Expression régulière", value = regex, width = "100%")),
+        column(6, sliderInput("width", "Taille images", 100, 2000, 1200, 50, width = "100%"))),
+  )
   
 )
 
+
+ui <- dashboardPage(
+  dashboardHeader(disable = T),
+  dashboardSidebar(disable = T),
+  dashboardBody(ui)
+)
 
 server <- function(input, output, session) {
 
