@@ -1,12 +1,12 @@
 # shinyGroupedPlotViewer
 
-Une application Shiny pour la visualisation de séries de graphiques exportés.
+A Shiny application for visualizing series of exported plots.
 
-## Exemple
+## Example
 
-Supposons que vous avez trois graphiques (chart1, chart2, chart3) pour une série de villes.
+Suppose you have three plots (chart1, chart2, chart3) for a series of cities.
 
-### Structure des fichiers dans le répertoire :
+### File structure in the directory:
 
 ```
 paris_chart1.png
@@ -20,33 +20,33 @@ rennes_chart2.png
 rennes_chart3.png
 ```
 
-### Fonctionnalité
+### Functionality
 
-Grâce à une expression régulière (REGEX), l'application propose un champ de sélection pour choisir la ville à afficher. Une fois la ville sélectionnée, l'application affiche les graphiques `chart1`, `chart2` et `chart3` uniquement pour la ville choisie.
+Using a regular expression (REGEX), the application provides a selection field to choose the individual (e.g., city, person, country, cluster, etc.) to display. Once the individual is selected, the application displays the `chart1`, `chart2`, and `chart3` plots only for the selected individual.
 
-## Utilisation
+## Usage
 
-1. **Préparation des fichiers** : Assurez-vous que vos fichiers de graphiques suivent une nomenclature cohérente ou qu'il est possible de capter les différences de nomenclature grâce à une expression régulière (REGEX). Par exemple, les fichiers peuvent suivre la nomenclature `ville_chartX.png`, où `ville` est le nom de la ville et `X` est le numéro du graphique.
+1. **File Preparation**: Ensure that your plot files follow a consistent naming convention or that differences in naming conventions can be captured using a regular expression (REGEX). For example, files can follow the naming convention `individual_chartX.png`, where `individual` is the name of the individual and `X` is the plot number.
 
-2. **Configuration** :
-   - **Chemin vers les graphiques** : Vous pouvez configurer le chemin vers le répertoire contenant les graphiques.
-   - **Expression régulière (REGEX)** : Vous pouvez configurer l'expression régulière utilisée pour extraire les informations des noms de fichiers.
+2. **Configuration**:
+   - **Path to Plots**: You can configure the path to the directory containing the plots.
+   - **Regular Expression (REGEX)**: You can configure the regular expression used to extract information from the file names.
 
-3. **Lancement de l'application** : Démarrez l'application Shiny.
+3. **Launch the Application**: Start the Shiny application.
 
-4. **Sélection de la ville** : Utilisez le champ de sélection pour choisir la ville dont vous souhaitez visualiser les graphiques.
+4. **Select the Individual**: Use the selection field to choose the individual whose plots you want to visualize.
 
-5. **Visualisation** : Les graphiques correspondants à la ville sélectionnée seront affichés.
+5. **Visualization**: The plots corresponding to the selected individual will be displayed.
 
 ## Installation
 
-Pour utiliser `shinyGroupedPlotViewer`, vous devez avoir R et le package Shiny installés. Vous pouvez installer Shiny en utilisant la commande suivante :
+To use `shinyGroupedPlotViewer`, you need to have R and the Shiny package installed. You can install Shiny using the following command:
 
 ```R
 install.packages("shiny")
 ```
 
-Ensuite, clonez ce dépôt et lancez l'application Shiny en exécutant le fichier `app.R` ou en utilisant la commande suivante dans R :
+Then, clone this repository and launch the Shiny application by running the `app.R` file or using the following command in R:
 
 ```R
 shiny::runApp("path/to/shinyGroupedPlotViewer")
@@ -54,8 +54,8 @@ shiny::runApp("path/to/shinyGroupedPlotViewer")
 
 ## Contribution
 
-Les contributions sont les bienvenues ! Si vous avez des suggestions, des améliorations ou des corrections, n'hésitez pas à ouvrir une issue ou à soumettre une pull request.
+Contributions are welcome! If you have suggestions, improvements, or corrections, please feel free to open an issue or submit a pull request.
 
-## Licence
+## License
 
-Ce projet est libre de droit. Vous pouvez l'utiliser, le modifier et le distribuer librement sans aucune restriction.
+This project is free of rights. You can use, modify, and distribute it freely without any restrictions.
